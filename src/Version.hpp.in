@@ -1,0 +1,2 @@
+#pragma once
+#define VERSION "malt @VERSION_MAJOR@.@VERSION_MINOR@ built on @BUILT_ON@\n"
