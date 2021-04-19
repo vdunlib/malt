@@ -15,11 +15,6 @@ find_package(Boost 1.75 REQUIRED COMPONENTS program_options)
 
 if (DEFINED FMT6_PATH)
     set(FMT6_INCLUDE_FILES ${FMT6_PATH}/include)
-    list(APPEND
-            FMT6_SOURCE_FILES
-            ${FMT6_PATH}/src/format.cc)
-    add_library(fmt6lib ${FMT6_SOURCE_FILES})
-    target_include_directories(fmt6lib PRIVATE ${FMT6_INCLUDE_FILES})
 else()
     message(FATAL_ERROR "FMT6_PATH not defined. It must point to the fmt6 library root")
 endif()
