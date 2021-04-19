@@ -5,9 +5,9 @@
 
 #include <fmt/format.h>
 
-#include "atendi/utils/config/ParamDescrList.hpp"
+#include "vdunlib/utils/config/ParamDescrList.hpp"
 
-namespace atendi {
+namespace vdunlib {
 
 namespace {
 std::string repC(char c, unsigned r) {
@@ -39,4 +39,4 @@ std::string formatParams(const ParamDescrList& params) {
     return fmt::to_string(buf);
 }
 
-} // namespace atendi
+} // namespace vdunlib
