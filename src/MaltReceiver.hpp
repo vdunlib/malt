@@ -60,8 +60,8 @@ private:
             return sysCallError("fcntl() failed to get socket flags");
 
         flags |= O_NONBLOCK;
-        fcntl(s_, F_SETFL, flags);
-        if (flags == -1)
+        int rv = fcntl(s_, F_SETFL, flags);
+        if (rv == -1)
             return sysCallError("fcntl() failed to make socket non-blocking");
 
         // allow multiple sockets use the same UDP ports
