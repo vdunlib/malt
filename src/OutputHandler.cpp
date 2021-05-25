@@ -90,6 +90,7 @@ void showPayload(PacketInfo const& pinfo, bool colors) {
                 if (i == 8) fmt::format_to(buf, " ");
                 fmt::format_to(buf, "   ");
             }
+        }
 
         fmt::format_to(buf, " ");
 
