@@ -56,7 +56,7 @@ add_executable(
         src/TimeoutCounter.hpp
 )
 
-if (MONOLITHC)
+if (MONOLITHIC)
     message(STATUS "Building a monolithic executable")
     set(CMAKE_EXE_LINKER_FLAGS " -static")
 else()
