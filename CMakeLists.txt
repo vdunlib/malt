@@ -8,7 +8,7 @@ add_compile_definitions(FMT_HEADER_ONLY)
 # set(CMAKE_VERBOSE_MAKEFILE ON)
 
 set(VERSION_MAJOR 1)
-set(VERSION_MINOR 0)
+set(VERSION_MINOR 1)
 string(TIMESTAMP BUILT_ON)
 
 set(Boost_USE_STATIC_LIBS ON)
@@ -55,6 +55,13 @@ add_executable(
         src/RxStats.hpp
         src/TimeoutCounter.hpp
 )
+
+if (MONOLITHC)
+    message(STATUS "Building a monolithic executable")
+    set(CMAKE_EXE_LINKER_FLAGS " -static")
+else()
+    message(STATUS "Building a dynamic executable")
+endif()
 
 target_include_directories(malt PRIVATE .)
 target_include_directories(malt PRIVATE ${FMT6_INCLUDE_FILES})
