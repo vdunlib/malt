@@ -175,7 +175,7 @@ void fmtRxStats(
         RxStats const& rxStats, fmt::memory_buffer& buf) {
     if (rxStats.size() == 0) {
         fmt::format_to(buf,
-                "No traffic received for {} in {} sec",
+                "No traffic received for {} in {} sec\n",
                 fmtGrpDPort(group, dport, wildcard),
                 rcvdDur(rxStats.durationNanos()));
         return;

@@ -1,3 +1,4 @@
+#include <unistd.h>
 #include <cstdint>
 #include <tuple>
 #include <string>
@@ -299,7 +300,7 @@ Config Config::forArgs(int argc, char const* const* argv) {
     auto timeoutSec = getTimeout(vm.count("timeout") > 0, timeoutSecTxt);
     bool showPayload = vm.count("data") > 0;
     auto count = getCount(vm.count("count") > 0, countTxt);
-    bool nocolors = vm.count("nocolors") > 0;
+    bool nocolors = vm.count("nocolors") > 0 || !isatty(fileno(stdout));
     bool sender;
     unsigned ttl;
     std::tie(sender, ttl) = getSenderParams(
