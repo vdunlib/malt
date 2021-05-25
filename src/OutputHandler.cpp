@@ -40,10 +40,10 @@ bool showMaltPacket(PacketInfo const& pinfo, bool colors) {
     fmt::memory_buffer buf{};
     if (colors) fmt::format_to(buf, TERM_COLOR_RED_BRIGHT);
     fmt::format_to(buf,
-            "{:<12} {}:{}->{}:{} TTL {}, malt pkt seq #{} | {} {}",
+            "{:<12} {}:{}->{}:{} TTL {}, UDP length {}, malt pkt seq #{} | {} {}",
             strTs(pinfo.timestamp),
             pinfo.source, pinfo.sport, pinfo.group, pinfo.dport,
-            fmtTtl(pinfo.ttl),
+            fmtTtl(pinfo.ttl), pinfo.payloadSize,
             hdr->seq, sourceName, strTs(hdr->timeNs));
     if (colors) fmt::format_to(buf, TERM_COLOR_RESET);
     fmt::print("{}\n", fmt::to_string(buf));
@@ -55,10 +55,10 @@ void showPacketInfo(PacketInfo const& pinfo, bool colors) {
     if (colors) fmt::format_to(buf, TERM_COLOR_YELLOW_BRIGHT);
 
     fmt::format_to(buf,
-            "{:<12} {}:{}->{}:{} TTL {}",
+            "{:<12} {}:{}->{}:{} TTL {}, UDP length {}",
             strTs(pinfo.timestamp),
             pinfo.source, pinfo.sport, pinfo.group, pinfo.dport,
-            fmtTtl(pinfo.ttl));
+            fmtTtl(pinfo.ttl), pinfo.payloadSize);
 
     if (colors) fmt::format_to(buf, TERM_COLOR_RESET);
     fmt::print("{}\n", fmt::to_string(buf));
@@ -90,7 +90,6 @@ void showPayload(PacketInfo const& pinfo, bool colors) {
                 if (i == 8) fmt::format_to(buf, " ");
                 fmt::format_to(buf, "   ");
             }
-        }
 
         fmt::format_to(buf, " ");
 
